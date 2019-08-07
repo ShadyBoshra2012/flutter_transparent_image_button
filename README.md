@@ -1,6 +1,6 @@
 # Transparent Image Button  
-  
-  
+
+[![Build Status](https://travis-ci.com/ShadyBoshra2012/flutter_transparent_image_button.svg?branch=master)](https://travis-ci.com/ShadyBoshra2012/flutter_transparent_image_button) [![Codemagic build status](https://api.codemagic.io/apps/5d4afeeb36524a00189ef782/5d4afeeb36524a00189ef781/status_badge.svg)](https://codemagic.io/apps/5d4afeeb36524a00189ef782/5d4afeeb36524a00189ef781/latest_build)  
   
 ## Explain  
   

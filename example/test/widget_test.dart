@@ -7,7 +7,8 @@
 
 import 'package:flutter_test/flutter_test.dart';
 
-import 'package:transparent_image_button_ex/main.dart';
+import '../lib/main.dart';
+
 
 void main() {
   testWidgets('test', (WidgetTester tester) async {

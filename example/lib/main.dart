@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:transparent_image_button_ex/transparent_image_button.dart';
+import 'package:transparent_image_button/transparent_image_button.dart';
 
 void main() => runApp(MyApp());
 

@@ -1,6 +1,6 @@
 name: transparent_image_button
-description: This package is used to click on **Transparent Image** as a Gesture, but it's `OnTap` function works only when it was clicked on the image or photo itself not on the transparent parts.
-version: 0.0.1
+description: This package is used to click on Transparent Image as a Gesture, but it's OnTap function works only when it was clicked on the image or photo itself not on the transparent parts.
+version: 0.1.0
 author: Shady Boshra<ShadyBoshra2011@gmail.com>
 homepage: https://github.com/ShadyBoshra2012/flutter_transparent_image_button
 

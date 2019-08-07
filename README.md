@@ -6,7 +6,7 @@
   
 This package is used to click on **Transparent Image** as a Gesture, but it's `OnTap` function works only when it was clicked on the image or photo itself not on the transparent parts.  
   
-## Example  
+## How to use ?  
   
 `TransparentImageButton.assets(  
 	 "assets/images/egg.png", 
@@ -30,3 +30,27 @@ This package is used to click on **Transparent Image** as a Gesture, but it's `O
 ## Issues or Contributions
 
 This is a beta version of package, so I am very welcoming any issues or contribution you can help me with.
+
+## License
+
+MIT: [http://mit-license.org](http://mit-license.org). 
+
+Copyright (c) 2019 Shady Boshra. All rights reserved.
+
+Permission is hereby granted, free of charge, to any person obtaining a copy
+of this software and associated documentation files (the "Software"), to deal
+in the Software without restriction, including without limitation the rights
+to use, copy, modify, merge, publish, distribute, sublicense, and/or sell
+copies of the Software, and to permit persons to whom the Software is
+furnished to do so, subject to the following conditions:
+
+The above copyright notice and this permission notice shall be included in all
+copies or substantial portions of the Software.
+
+THE SOFTWARE IS PROVIDED "AS IS", WITHOUT WARRANTY OF ANY KIND, EXPRESS OR
+IMPLIED, INCLUDING BUT NOT LIMITED TO THE WARRANTIES OF MERCHANTABILITY,
+FITNESS FOR A PARTICULAR PURPOSE AND NONINFRINGEMENT. IN NO EVENT SHALL THE
+AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
+LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
+OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
+SOFTWARE.

@@ -1,7 +1,7 @@
 # Transparent Image Button  
 
-[![https://img.shields.io/pub/v/transparent_image_button.svg](https://pub.dev/packages/transparent_image_button)] [![Build Status](https://travis-ci.com/ShadyBoshra2012/flutter_transparent_image_button.svg?branch=master)](https://travis-ci.com/ShadyBoshra2012/flutter_transparent_image_button) [![Codemagic build status](https://api.codemagic.io/apps/5d4afeeb36524a00189ef782/5d4afeeb36524a00189ef781/status_badge.svg)](https://codemagic.io/apps/5d4afeeb36524a00189ef782/5d4afeeb36524a00189ef781/latest_build)  
-  
+[![pub.dev](https://img.shields.io/pub/v/transparent_image_button.svg)](https://pub.dev/packages/transparent_image_button)  [![Build Status](https://travis-ci.com/ShadyBoshra2012/flutter_transparent_image_button.svg?branch=master)](https://travis-ci.com/ShadyBoshra2012/flutter_transparent_image_button) [![Codemagic build status](https://api.codemagic.io/apps/5d4afeeb36524a00189ef782/5d4afeeb36524a00189ef781/status_badge.svg)](https://codemagic.io/apps/5d4afeeb36524a00189ef782/5d4afeeb36524a00189ef781/latest_build)  
+
 ## Explain  
   
 This package is used to click on **Transparent Image** as a Gesture, but it's `OnTap` function works only when it was clicked on the image or photo itself not on the transparent parts.  

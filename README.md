@@ -1,9 +1,6 @@
-<!-- Place this tag in your head or just before your close body tag. -->
-<script async defer src="https://buttons.github.io/buttons.js"></script>
-
 # Transparent Image Button  
 
-[![pub.dev](https://img.shields.io/pub/v/transparent_image_button.svg)](https://pub.dev/packages/transparent_image_button)  [![Build Status](https://travis-ci.com/ShadyBoshra2012/flutter_transparent_image_button.svg?branch=master)](https://travis-ci.com/ShadyBoshra2012/flutter_transparent_image_button) [![Codemagic build status](https://api.codemagic.io/apps/5d4afeeb36524a00189ef782/5d4afeeb36524a00189ef781/status_badge.svg)](https://codemagic.io/apps/5d4afeeb36524a00189ef782/5d4afeeb36524a00189ef781/latest_build) [![Donate Paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/ShadyBoshra2012) <a class="github-button" href="https://github.com/ShadyBoshra2012" aria-label="Follow @ShadyBoshra2012 on GitHub">Follow @ShadyBoshra2012</a>
+[![pub.dev](https://img.shields.io/pub/v/transparent_image_button.svg)](https://pub.dev/packages/transparent_image_button)  [![Build Status](https://travis-ci.com/ShadyBoshra2012/flutter_transparent_image_button.svg?branch=master)](https://travis-ci.com/ShadyBoshra2012/flutter_transparent_image_button) [![Codemagic build status](https://api.codemagic.io/apps/5d4afeeb36524a00189ef782/5d4afeeb36524a00189ef781/status_badge.svg)](https://codemagic.io/apps/5d4afeeb36524a00189ef782/5d4afeeb36524a00189ef781/latest_build) [![Donate Paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/ShadyBoshra2012) <iframe src="https://ghbtns.com/github-btn.html?user=mdo&type=follow&count=true&size=large" frameborder="0" scrolling="0" width="220px" height="30px"></iframe>
 
 ## Explain  
   

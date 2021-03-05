@@ -1,6 +1,6 @@
 # Transparent Image Button  
 
-[![pub.dev](https://img.shields.io/pub/v/transparent_image_button.svg)](https://pub.dev/packages/transparent_image_button)  [![Build Status](https://travis-ci.com/ShadyBoshra2012/flutter_transparent_image_button.svg?branch=master)](https://travis-ci.com/ShadyBoshra2012/flutter_transparent_image_button) [![Codemagic build status](https://api.codemagic.io/apps/5d4afeeb36524a00189ef782/5d4afeeb36524a00189ef781/status_badge.svg)](https://codemagic.io/apps/5d4afeeb36524a00189ef782/5d4afeeb36524a00189ef781/latest_build) [![Donate Paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/ShadyBoshra2012)  
+[![pub.dev](https://img.shields.io/pub/v/transparent_image_button.svg)](https://pub.dev/packages/transparent_image_button)  [![Build Status](https://travis-ci.com/ShadyBoshra2012/flutter_transparent_image_button.svg?branch=master)](https://travis-ci.com/ShadyBoshra2012/flutter_transparent_image_button) [![Codemagic build status](https://api.codemagic.io/apps/5d4afeeb36524a00189ef782/5d4afeeb36524a00189ef781/status_badge.svg)](https://codemagic.io/apps/5d4afeeb36524a00189ef782/5d4afeeb36524a00189ef781/latest_build) [![Donate Paypal](https://img.shields.io/badge/Donate-PayPal-green.svg)](https://paypal.me/ShadyBoshra2012) [![GitHub Follow](https://img.shields.io/github/followers/ShadyBoshra2012.svg?style=social&label=Follow)](https://github.com/ShadyBoshra2012)
 
 ## Explain  
   
@@ -54,3 +54,7 @@ AUTHORS OR COPYRIGHT HOLDERS BE LIABLE FOR ANY CLAIM, DAMAGES OR OTHER
 LIABILITY, WHETHER IN AN ACTION OF CONTRACT, TORT OR OTHERWISE, ARISING FROM,
 OUT OF OR IN CONNECTION WITH THE SOFTWARE OR THE USE OR OTHER DEALINGS IN THE
 SOFTWARE.
+
+## Find me on Stackoverflow
+
+<a href="https://stackoverflow.com/users/2076880/shady-boshra"><img src="https://stackoverflow.com/users/flair/2076880.png" width="208" height="58" alt="profile for Shady Boshra at Stack Overflow, Q&amp;A for professional and enthusiast programmers" title="profile for Shady Boshra at Stack Overflow, Q&amp;A for professional and enthusiast programmers"></a>

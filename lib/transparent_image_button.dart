@@ -10,33 +10,30 @@ import 'package:image/image.dart' as img;
 
 class TransparentImageButton extends StatefulWidget {
   final String imagePath;
-  final Function onTapInside;
-  final Function onTapOutside;
+  final Function? onTapInside;
+  final Function? onTapOutside;
 
   const TransparentImageButton.assets(this.imagePath,
-      {Key key,
-        this.frameBuilder,
-        this.semanticLabel,
-        this.excludeFromSemantics = false,
-        this.scale,
-        this.width,
-        this.height,
-        this.color,
-        this.colorBlendMode,
-        this.fit,
-        this.alignment = Alignment.center,
-        this.repeat = ImageRepeat.noRepeat,
-        this.centerSlice,
-        this.matchTextDirection = false,
-        this.gaplessPlayback = false,
-        this.package,
-        this.filterQuality = FilterQuality.low,
-        this.onTapInside,
-        this.onTapOutside})
-      : assert(alignment != null),
-        assert(repeat != null),
-        assert(matchTextDirection != null),
-        super(key: key);
+      {Key? key,
+      this.frameBuilder,
+      this.semanticLabel,
+      this.excludeFromSemantics = false,
+      this.scale,
+      this.width,
+      this.height,
+      this.color,
+      this.colorBlendMode,
+      this.fit,
+      this.alignment = Alignment.center,
+      this.repeat = ImageRepeat.noRepeat,
+      this.centerSlice,
+      this.matchTextDirection = false,
+      this.gaplessPlayback = false,
+      this.package,
+      this.filterQuality = FilterQuality.low,
+      this.onTapInside,
+      this.onTapOutside})
+      : super(key: key);
 
   // TODO: TransparentImageButton.network
 
@@ -47,7 +44,7 @@ class TransparentImageButton extends StatefulWidget {
   /// image.
   ///
   /// {@animation 400 400 https://flutter.github.io/assets-for-api-docs/assets/widgets/frame_builder_image.mp4}
-  final ImageFrameBuilder frameBuilder;
+  final ImageFrameBuilder? frameBuilder;
 
   /// If non-null, require the image to have this width.
   ///
@@ -59,7 +56,7 @@ class TransparentImageButton extends StatefulWidget {
   /// layout constraints, so that the image does not change size as it loads.
   /// Consider using [fit] to adapt the image's rendering to fit the given width
   /// and height if the exact image dimensions are not known in advance.
-  final double width;
+  final double? width;
 
   /// If non-null, require the image to have this height.
   ///
@@ -71,10 +68,10 @@ class TransparentImageButton extends StatefulWidget {
   /// layout constraints, so that the image does not change size as it loads.
   /// Consider using [fit] to adapt the image's rendering to fit the given width
   /// and height if the exact image dimensions are not known in advance.
-  final double height;
+  final double? height;
 
   /// If non-null, this color is blended with each image pixel using [colorBlendMode].
-  final Color color;
+  final Color? color;
 
   /// Used to set the [FilterQuality] of the image.
   ///
@@ -91,13 +88,13 @@ class TransparentImageButton extends StatefulWidget {
   /// See also:
   ///
   ///  * [BlendMode], which includes an illustration of the effect of each blend mode.
-  final BlendMode colorBlendMode;
+  final BlendMode? colorBlendMode;
 
   /// How to inscribe the image into the space allocated during layout.
   ///
   /// The default varies based on the other fields. See the discussion at
   /// [paintImage].
-  final BoxFit fit;
+  final BoxFit? fit;
 
   /// How to align the image within its bounds.
   ///
@@ -136,7 +133,7 @@ class TransparentImageButton extends StatefulWidget {
   /// region of the image above and below the center slice will be stretched
   /// only horizontally and the region of the image to the left and right of
   /// the center slice will be stretched only vertically.
-  final Rect centerSlice;
+  final Rect? centerSlice;
 
   /// Whether to paint the image in the direction of the [TextDirection].
   ///
@@ -163,7 +160,7 @@ class TransparentImageButton extends StatefulWidget {
   ///
   /// Used to provide a description of the image to TalkBack on Android, and
   /// VoiceOver on iOS.
-  final String semanticLabel;
+  final String? semanticLabel;
 
   /// Whether to exclude this image from semantics.
   ///
@@ -172,16 +169,16 @@ class TransparentImageButton extends StatefulWidget {
   final bool excludeFromSemantics;
 
   // Package
-  final String package;
+  final String? package;
 
   // Scale
-  final double scale;
+  final double? scale;
 }
 
 class _TransparentImageButton extends State<TransparentImageButton> {
   GlobalKey imageKey = GlobalKey();
 
-  img.Image photo;
+  img.Image? photo;
 
   @override
   Widget build(BuildContext context) {
@@ -219,22 +216,22 @@ class _TransparentImageButton extends State<TransparentImageButton> {
   }
 
   void _calculatePixel(Offset globalPosition) {
-    RenderBox box = imageKey.currentContext.findRenderObject();
+    RenderBox box = imageKey.currentContext!.findRenderObject() as RenderBox;
     Offset localPosition = box.globalToLocal(globalPosition);
 
     double px = localPosition.dx;
     double py = localPosition.dy;
 
-    double widgetScale = box.size.width / photo.width;
+    double widgetScale = box.size.width / photo!.width;
     px = (px / widgetScale);
     py = (py / widgetScale);
 
-    int pixel32 = photo.getPixelSafe(px.toInt(), py.toInt());
+    int pixel32 = photo!.getPixelSafe(px.toInt(), py.toInt());
     int hex = abgrToArgb(pixel32);
 
-    if (widget.onTapInside != null && Color(hex).opacity != 0.0) widget.onTapInside();
+    if (widget.onTapInside != null && Color(hex).opacity != 0.0) widget.onTapInside!();
 
-    if (widget.onTapOutside != null && Color(hex).opacity == 0.0) widget.onTapOutside();
+    if (widget.onTapOutside != null && Color(hex).opacity == 0.0) widget.onTapOutside!();
   }
 
   Future<void> loadImageBundleBytes() async {
@@ -245,7 +242,7 @@ class _TransparentImageButton extends State<TransparentImageButton> {
   void setImageBytes(ByteData imageBytes) {
     List<int> values = imageBytes.buffer.asUint8List();
     photo = null;
-    photo = img.decodeImage(values);
+    photo = img.decodeImage(values)!;
   }
 }
 

@@ -1,3 +1,7 @@
+## [0.2.0]
+
+* Migrate Null-Safety.
+
 ## [0.1.1+1].- Update README file
 
 * Update README file.

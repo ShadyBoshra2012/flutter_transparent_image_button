@@ -33,7 +33,7 @@ This is a beta version of package, so I am very welcoming any issues or contribu
 
 ## License
 
-MIT: [http://mit-license.org](http://mit-license.org). 
+MIT: [https://mit-license.org](https://mit-license.org). 
 
 Copyright (c) 2019 Shady Boshra. All rights reserved.
 

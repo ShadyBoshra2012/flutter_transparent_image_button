@@ -289,7 +289,7 @@ class _TransparentImageButton extends State<TransparentImageButton> {
         widget.opacityThreshold) { // Pixel meets the opacity threshold
       if (hover && widget.onHoverOutside != null) {
         widget.onHoverOutside!();
-      } else if (widget.onTapOutside != null) {
+      } else if (!hover && widget.onTapOutside != null) {
         widget.onTapOutside!();
       }
     } else { // Pixel is opaque

@@ -40,7 +40,8 @@ class TransparentImageButton extends StatefulWidget {
         this.updateCursor = true,
         this.offCursor = SystemMouseCursors.basic,
         this.onCursor = SystemMouseCursors.click,
-        this.opacityThreshold = 0.0})
+        this.opacityThreshold = 0.0,
+        this.checkTap = false})
       : super(key: key);
 
   // TODO: TransparentImageButton.network
@@ -198,6 +199,14 @@ class TransparentImageButton extends StatefulWidget {
   /// is useful for images that have a partially-transparent border that shouldn't be clickable.
   final double opacityThreshold;
 
+  /// Whether to check touches on a full tap (true), or onPanDown (false).
+  ///
+  /// For applications where you might be panning or scrolling, it's recommended to
+  /// set this to true in order to avoid firing when the user is tring to scroll.
+  ///
+  /// Defaults to false.
+  final bool checkTap;
+
   // Package
   final String? package;
 
@@ -238,7 +247,8 @@ class _TransparentImageButton extends State<TransparentImageButton> {
         }
       },
       child: GestureDetector(
-        onPanDown: (details) => searchPixel(details.globalPosition, false),
+        onPanDown: (details) => widget.checkTap ? null : searchPixel(details.globalPosition, false),
+        onTapDown: (details) => widget.checkTap ? searchPixel(details.globalPosition, false) : null,
         // onPanUpdate: (details) => searchPixel(details.globalPosition),
         child: Image.asset(
           widget.imagePath,

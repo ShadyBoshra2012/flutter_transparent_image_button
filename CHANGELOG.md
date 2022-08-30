@@ -1,3 +1,7 @@
+## [1.0.0]
+
+* Add QoL improvements for Flutter web.
+
 ## [0.2.0]
 
 * Migrate Null-Safety.

@@ -38,8 +38,11 @@ class _MyHomePageState extends State<MyHomePage> {
             TransparentImageButton.assets(
               "assets/images/egg.png",
               width: 200,
+              opacityThreshold: 0.8,
               onTapInside: () => print("You tapped the image."),
               onTapOutside: () => print("You tapped outside the image."),
+              onHoverInside: () => print("You're hovering inside the image."),
+              onHoverOutside: () => print("You're hovering outside the image."),
             ),
           ],
         ),

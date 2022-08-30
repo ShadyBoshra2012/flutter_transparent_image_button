@@ -5,34 +5,43 @@ import 'dart:typed_data';
 
 import 'package:flutter/material.dart';
 import 'package:flutter/rendering.dart';
-import 'package:flutter/services.dart' show rootBundle;
+import 'package:flutter/services.dart';
 import 'package:image/image.dart' as img;
 
 class TransparentImageButton extends StatefulWidget {
   final String imagePath;
   final Function? onTapInside;
   final Function? onTapOutside;
+  final Function? onHoverInside;
+  final Function? onHoverOutside;
 
   const TransparentImageButton.assets(this.imagePath,
       {Key? key,
-      this.frameBuilder,
-      this.semanticLabel,
-      this.excludeFromSemantics = false,
-      this.scale,
-      this.width,
-      this.height,
-      this.color,
-      this.colorBlendMode,
-      this.fit,
-      this.alignment = Alignment.center,
-      this.repeat = ImageRepeat.noRepeat,
-      this.centerSlice,
-      this.matchTextDirection = false,
-      this.gaplessPlayback = false,
-      this.package,
-      this.filterQuality = FilterQuality.low,
-      this.onTapInside,
-      this.onTapOutside})
+        this.frameBuilder,
+        this.semanticLabel,
+        this.excludeFromSemantics = false,
+        this.scale,
+        this.width,
+        this.height,
+        this.color,
+        this.colorBlendMode,
+        this.fit,
+        this.alignment = Alignment.center,
+        this.repeat = ImageRepeat.noRepeat,
+        this.centerSlice,
+        this.matchTextDirection = false,
+        this.gaplessPlayback = false,
+        this.package,
+        this.filterQuality = FilterQuality.low,
+        this.onTapInside,
+        this.onTapOutside,
+        this.onHoverInside,
+        this.onHoverOutside,
+        this.updateCursor = true,
+        this.offCursor = SystemMouseCursors.basic,
+        this.onCursor = SystemMouseCursors.click,
+        this.opacityThreshold = 0.0,
+        this.checkTap = false})
       : super(key: key);
 
   // TODO: TransparentImageButton.network
@@ -168,6 +177,36 @@ class TransparentImageButton extends StatefulWidget {
   /// application.
   final bool excludeFromSemantics;
 
+  /// Whether to show a different mouse cursor while hovering over the image (true),
+  /// or prevent the cursor from changing at all while hovering over the image (false).
+  final bool updateCursor;
+
+  /// Used to set the cursor type while hovering over an opaque portion of the image.
+  ///
+  /// Defaults to [SystemMouseCursors.click].
+  ///
+  /// If [updateCursor] is set to false, this will have no effect.
+  final SystemMouseCursor onCursor;
+
+  /// Used to set the cursor type while hovering over a transparent portion of the image.
+  ///
+  /// Defaults to [SystemMouseCursors.basic].
+  ///
+  /// If [updateCursor] is set to false, this will have no effect.
+  final SystemMouseCursor offCursor;
+
+  /// How opaque a pixel must to be before being recognized as part of the image. This
+  /// is useful for images that have a partially-transparent border that shouldn't be clickable.
+  final double opacityThreshold;
+
+  /// Whether to check touches on a full tap (true), or onPanDown (false).
+  ///
+  /// For applications where you might be panning or scrolling, it's recommended to
+  /// set this to true in order to avoid firing when the user is tring to scroll.
+  ///
+  /// Defaults to false.
+  final bool checkTap;
+
   // Package
   final String? package;
 
@@ -180,42 +219,69 @@ class _TransparentImageButton extends State<TransparentImageButton> {
 
   img.Image? photo;
 
+  SystemMouseCursor cursor = SystemMouseCursors.basic;
+
   @override
   Widget build(BuildContext context) {
-    return GestureDetector(
-      onPanDown: (details) => searchPixel(details.globalPosition),
-      //onPanUpdate: (details) => searchPixel(details.globalPosition),
-      child: Image.asset(
-        widget.imagePath,
-        key: imageKey,
-        frameBuilder: widget.frameBuilder,
-        semanticLabel: widget.semanticLabel,
-        excludeFromSemantics: widget.excludeFromSemantics,
-        scale: widget.scale,
-        width: widget.width,
-        height: widget.height,
-        color: widget.color,
-        colorBlendMode: widget.colorBlendMode,
-        fit: widget.fit,
-        alignment: widget.alignment,
-        repeat: widget.repeat,
-        centerSlice: widget.centerSlice,
-        matchTextDirection: widget.matchTextDirection,
-        gaplessPlayback: widget.gaplessPlayback,
-        package: widget.package,
-        filterQuality: widget.filterQuality,
+    return MouseRegion(
+      cursor: cursor,
+      onHover: (details) async {
+        // Check if the current pixel is transparent
+        var search = await searchPixel(details.position, true);
+
+        if (widget.updateCursor == true) {
+          if (search == true) {
+            cursor = widget.onCursor;
+            setState(() {});
+          } else {
+            cursor = widget.offCursor;
+            setState(() {});
+          }
+        }
+      },
+      onExit: (event) {
+        // Make sure the cursor is properly set when exiting
+        if (widget.updateCursor == true) {
+          cursor = widget.offCursor;
+          setState(() {});
+        }
+      },
+      child: GestureDetector(
+        onPanDown: (details) => widget.checkTap ? null : searchPixel(details.globalPosition, false),
+        onTapDown: (details) => widget.checkTap ? searchPixel(details.globalPosition, false) : null,
+        // onPanUpdate: (details) => searchPixel(details.globalPosition),
+        child: Image.asset(
+          widget.imagePath,
+          key: imageKey,
+          frameBuilder: widget.frameBuilder,
+          semanticLabel: widget.semanticLabel,
+          excludeFromSemantics: widget.excludeFromSemantics,
+          scale: widget.scale,
+          width: widget.width,
+          height: widget.height,
+          color: widget.color,
+          colorBlendMode: widget.colorBlendMode,
+          fit: widget.fit,
+          alignment: widget.alignment,
+          repeat: widget.repeat,
+          centerSlice: widget.centerSlice,
+          matchTextDirection: widget.matchTextDirection,
+          gaplessPlayback: widget.gaplessPlayback,
+          package: widget.package,
+          filterQuality: widget.filterQuality,
+        ),
       ),
     );
   }
 
-  void searchPixel(Offset globalPosition) async {
+  dynamic searchPixel(Offset globalPosition, bool hover) async {
     if (photo == null) {
       await loadImageBundleBytes();
     }
-    _calculatePixel(globalPosition);
+    return _calculatePixel(globalPosition, hover);
   }
 
-  void _calculatePixel(Offset globalPosition) {
+  bool _calculatePixel(Offset globalPosition, bool hover) {
     RenderBox box = imageKey.currentContext!.findRenderObject() as RenderBox;
     Offset localPosition = box.globalToLocal(globalPosition);
 
@@ -229,9 +295,26 @@ class _TransparentImageButton extends State<TransparentImageButton> {
     int pixel32 = photo!.getPixelSafe(px.toInt(), py.toInt());
     int hex = abgrToArgb(pixel32);
 
-    if (widget.onTapInside != null && Color(hex).opacity != 0.0) widget.onTapInside!();
+    if (Color(hex).opacity <=
+        widget.opacityThreshold) { // Pixel meets the opacity threshold
+      if (hover && widget.onHoverOutside != null) {
+        widget.onHoverOutside!();
+      } else if (!hover && widget.onTapOutside != null) {
+        widget.onTapOutside!();
+      }
+    } else { // Pixel is opaque
+      if (hover) { // This is a hover event, not a tap
+        if (widget.onHoverInside != null) {
+          widget.onHoverInside!();
+        }
 
-    if (widget.onTapOutside != null && Color(hex).opacity == 0.0) widget.onTapOutside!();
+        return true;
+      } else if (widget.onTapInside != null) {
+        widget.onTapInside!();
+      }
+    }
+
+    return false;
   }
 
   Future<void> loadImageBundleBytes() async {

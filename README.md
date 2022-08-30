@@ -8,11 +8,17 @@ This package is used to click on **Transparent Image** as a Gesture, but it's `O
   
 ## How to use ?  
   
-`TransparentImageButton.assets(  
+```
+TransparentImageButton.assets(  
 	 "assets/images/egg.png", 
 	 width: 200, 
-	 onTapInside: () => print("You tapped the image."), 	
-	 onTapOutside: () => print("You tapped outside the image."), ),`  
+	 opacityThreshold: 0.8,
+         onTapInside: () => print("You tapped the image."),
+         onTapOutside: () => print("You tapped outside the image."),
+         onHoverInside: () => print("You're hovering inside the image."),
+         onHoverOutside: () => print("You're hovering outside the image."),
+),
+```
 
 ## Things ToDO
 

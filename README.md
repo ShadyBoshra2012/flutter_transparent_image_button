@@ -33,9 +33,14 @@ TransparentImageButton.assets(
 - [Get the pixel on which I clicked](https://stackoverflow.com/questions/56478321/get-the-pixel-on-which-i-clicked/56488053#56488053)  
 - [roipeker](https://gist.github.com/roipeker) [gist file](https://gist.github.com/roipeker/9315aa25301f5c0362caaebd15876c2f)
 
+
+## Contributors (Thanks for your GREAT work ❤️)
+
+[Jordan](https://github.com/APartOfMe1): Added QoL improvements for Flutter web.
+
 ## Issues or Contributions
 
-This is a beta version of package, so I am very welcoming any issues or contribution you can help me with.
+I am very welcoming any issues or contribution you can help me with.
 
 ## License
 
